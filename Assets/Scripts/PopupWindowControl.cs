@@ -137,7 +137,16 @@ public class PopupWindowControl : MonoBehaviour
         /// <summary>
         /// 生成按钮
         /// </summary>
-        public List<CC_Button> Buttons=new List<CC_Button>();
+        public List<CC_Button> Buttons=new List<CC_Button>()
+        {
+            new CC_Button()
+            {
+                CallBack = (g =>
+                {
+                    PopupWindowControl.Instance.ClosePopupWindow(g);
+                })
+            }
+        };
     }
     /// <summary>
     /// 标题
@@ -202,7 +211,10 @@ public class PopupWindowControl : MonoBehaviour
         /// <summary>
         /// 按下回调
         /// </summary>
-        public CallBack CallBack=new CallBack((g) => {});
+        public CallBack CallBack=new CallBack((g) =>
+        {
+            PopupWindowControl.Instance.ClosePopupWindow(g);
+        });
     }
     
 }

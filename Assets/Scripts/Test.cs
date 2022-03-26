@@ -5,53 +5,144 @@
     功能：Nothing
 
 ******************************************/
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Test : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private new List<PopupWindowControl.CC_Button> _ccButtonList = new List<PopupWindowControl.CC_Button>();
+
+    public InputField TitleColorStr;
+    public InputField TitleTextColorStr;
+    public InputField TitleText;
+    
+    public InputField BodyColorStr;
+    public InputField BodyTextColorStr;
+    public InputField BodyText;
+
+    public Dropdown ButtonDropdwon;
+
+    public InputField ButtonColorStr;
+    public InputField ButtonTextColorStr;
+    public InputField ButtonText;
+
+    private void Start()
     {
-        var a = PopupWindowControl.Instance.AccordingToPopupWindow(new PopupWindowControl.CC_PopupWindow()
+        TitleColorStr.text = "#FF8080";
+        TitleTextColorStr.text = "#FFFFFF";
+        TitleText.text = "标题示例";
+        
+        BodyColorStr.text = "#FF8080";
+        BodyTextColorStr.text = "#FFFFFF";
+        BodyText.text = "内容示例";
+        
+        ButtonColorStr.text = "#FF8080";
+        ButtonTextColorStr.text = "#FFFFFF";
+        ButtonText.text = "OK";
+    }
+
+    private int Num = 0;
+    public void NumberButtons(int i)
+    {
+        Num = i;
+    }
+    
+
+    public void Demo()
+    {
+        Color _titleColor;
+        ColorUtility.TryParseHtmlString(TitleColorStr.text, out _titleColor);
+        Color _titleTextColor;
+        ColorUtility.TryParseHtmlString(TitleTextColorStr.text, out _titleTextColor);
+        
+        Color _bodyColor;
+        ColorUtility.TryParseHtmlString(BodyColorStr.text, out _bodyColor);
+        Color _bodyTextColor;
+        ColorUtility.TryParseHtmlString(BodyTextColorStr.text, out _bodyTextColor);
+        
+        Color _ButtonColor;
+        ColorUtility.TryParseHtmlString(ButtonColorStr.text, out _ButtonColor);
+        Color _ButtonTextColor;
+        ColorUtility.TryParseHtmlString(ButtonTextColorStr.text, out _ButtonTextColor);
+
+        switch (Num)
+        {
+            case 0:
+            {
+                _ccButtonList = new List<PopupWindowControl.CC_Button>()
+                {
+                    new PopupWindowControl.CC_Button()
+                    {
+                        ButtonColor = _ButtonColor,
+                        ButtonText = ButtonText.text,
+                        ButtonTextColor = _ButtonTextColor
+                    }
+                };
+            }
+                break;
+            case 1:
+            {
+                _ccButtonList = new List<PopupWindowControl.CC_Button>()
+                {
+                    new PopupWindowControl.CC_Button()
+                    {
+                        ButtonColor = _ButtonColor,
+                        ButtonText = ButtonText.text,
+                        ButtonTextColor = _ButtonTextColor
+                    },new PopupWindowControl.CC_Button()
+                    {
+                        ButtonColor = _ButtonColor,
+                        ButtonText = ButtonText.text,
+                        ButtonTextColor = _ButtonTextColor
+                    }
+                };
+            }
+                break;
+            case 2:
+            {
+                _ccButtonList = new List<PopupWindowControl.CC_Button>()
+                {
+                    new PopupWindowControl.CC_Button()
+                    {
+                        ButtonColor = _ButtonColor,
+                        ButtonText = ButtonText.text,
+                        ButtonTextColor = _ButtonTextColor
+                    },new PopupWindowControl.CC_Button()
+                    {
+                        ButtonColor = _ButtonColor,
+                        ButtonText = ButtonText.text,
+                        ButtonTextColor = _ButtonTextColor
+                    },new PopupWindowControl.CC_Button()
+                    {
+                        ButtonColor = _ButtonColor,
+                        ButtonText = ButtonText.text,
+                        ButtonTextColor = _ButtonTextColor
+                    }
+                };
+            }
+                break;
+        }
+
+
+        PopupWindowControl.Instance.AccordingToPopupWindow(new PopupWindowControl.CC_PopupWindow()
         {
             Title = new PopupWindowControl.CC_Title()
             {
-                TitleText = "测试标题"
+                TitleColor = _titleColor,
+                TitleText = TitleText.text,
+                TitleTextColor = _titleTextColor
             },
             Body = new PopupWindowControl.CC_Body()
             {
-                BodyText = "测试内容"
+                BodyColor = _bodyColor,
+                BodyText = BodyText.text,
+                BodyTextColor = _bodyTextColor
             },
-            Buttons = new List<PopupWindowControl.CC_Button>()
-            {
-                new PopupWindowControl.CC_Button()
-                {
-                    ButtonText = "确定",
-                    CallBack = ((g) =>
-                    {
-                        Debug.Log("按下确定按钮");
-                        PopupWindowControl.Instance.ClosePopupWindow(g);
-                    })
-                },
-                new PopupWindowControl.CC_Button()
-                {
-                    ButtonColor = Color.gray,
-                    ButtonText = "取消",
-                    CallBack = ((g) =>
-                    {
-                        Debug.Log("按下取消按钮");
-                        PopupWindowControl.Instance.ClosePopupWindow(g);
-                    })
-                }
-            }
+            Buttons = _ccButtonList
         });
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
