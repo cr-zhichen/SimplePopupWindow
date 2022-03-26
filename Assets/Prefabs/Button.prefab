@@ -137,6 +137,7 @@ MonoBehaviour:
   button: {fileID: 4921200053994956524}
   image: {fileID: 4921200053994956527}
   text: {fileID: 4921200055595306384}
+  isDown: 0
 --- !u!1 &4921200055595306390
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +204,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 0dc54bdf9abb3f14c853a87d8f6cc804, type: 3}
     m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
