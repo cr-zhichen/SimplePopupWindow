@@ -68,4 +68,7 @@ PopupWindowControl.Instance.ClosePopupWindow(g);
 
 ## 演示视频
 
-<video src="https://kai.chengrui.xyz/Video/20220327_111353.mp4" width=auto height="600px" controls="controls"></video>
+
+
+https://user-images.githubusercontent.com/57337795/160265258-99da2131-100a-44ed-89d9-fdcb6bb60dd6.mp4
+
